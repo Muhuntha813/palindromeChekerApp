@@ -1,27 +1,28 @@
-class PalindromeCharArray {
+import java.util.Stack;
+
+class PalindromeStack {
 
     public static void main(String[] args) {
 
-        String word = "radar";   // string to check
+        String word = "madam";
+        Stack<Character> stack = new Stack<>();
 
-        // Convert string to character array
-        char[] ch = word.toCharArray();
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
 
-        int start = 0;
-        int end = ch.length - 1;
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
-            if (ch[start] != ch[end]) {
+        // Pop and compare
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
-        // Display result
+        // Print result
         if (isPalindrome) {
             System.out.println(word + " is a Palindrome");
         } else {
